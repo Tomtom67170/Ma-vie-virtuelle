@@ -1,4 +1,3 @@
-Bonjour, voici un fichier qui va vous aider à utiliser Ma vie virtuel.
 Au démarrage vous devrez choisir un sauvegarde. Vous devez indiquer le numéro de la sauvegarde qui sont au nombre de 3.
 NE PAS TOUCHER au 3 fichiers Sauvegarde.txt, en effet c'est ici que se trouvent les sauvegardes du jeu, les modifier,déplacer,renommer ou supprimer rendra votre partie inutilisable
 Vous serez guidé durant la partie à l'aide de John Business
