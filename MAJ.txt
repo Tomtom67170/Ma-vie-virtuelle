@@ -1,0 +1,13 @@
+Log des mises à jour:
+Version 0.0.2 ALPHA:
+-Tutoriel terminé
+-Correction du bug qui empêchez l'ouverture des sauvegardes 2 et 3
+-Ajout du convertisseur de sauvegarde
+-Mise en place des WSOD (Black Screen of Death), ces écran empêche les crash et permettent d'expliquer la situation.
+-Correction mineure de bug
+
+Version 0.1 ALPHA:
+-Ajout de la pièce chambre
+-Les actions "Dormir" et "Faire le lit" sont disponible.
+-Les WSOD deviennent des BSOD (Black Screen of Death)
+-Correction mineure de bug
