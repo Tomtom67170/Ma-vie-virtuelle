@@ -11,4 +11,4 @@ Tomservice est l'auteur original de ces fichiers mise en ligne gratuitement.
 Toute vente contre de l'argent de ces fichiers est totalement interdit
 Si de l'argent à été donné à une personne/groupe dans le but d'obtenir ces fichiers, vous êtes victime d'escroquerie.
 
-Le code du jeu à été écrit en python3 (windows 32bits ne peut faire tourner ce jeu)
+Le code du jeu à été écrit en python3
