@@ -2,14 +2,15 @@ print("Démarrage")
 import time
 import os
 import sys
-version_jeu = "0.1.1"   #Doit être modifié à CHAQUE maj
+version_jeu = "0.1.2"   #Doit être modifié à CHAQUE maj
 partie = []
 entré = 0
 version = 0
-NbVar = 4   #Doit être modifié à CHAQUE maj, le chiffre est NbVar -1
+NbVar = 9   #Doit être modifié à CHAQUE maj
 NbPartie = 0
 fichier = 0
 test = []
+copie = 0
 print("Bienvenue dans l'assistant de sauvegarde!")
 print("Ce programme est conçu pour gérer les sauvegardes de Ma vie virtuel.py version", version_jeu)
 if os.path.exists("Ma vie virtuelle.py"):
@@ -19,7 +20,7 @@ else:
     print("Le programme va s'arrêter")
     time.sleep(15)
     sys.exit()
-time.sleep(5)
+time.sleep(2)
 print("Action possible:")
 print("1. Créer une sauvegarde")
 print("2. Mettre à jour une sauvegarde")
@@ -66,10 +67,7 @@ if entré == 1:
             time.sleep(5)
             sys.exit()
         except FileNotFoundError:
-            print("Une partie va être créer dans la sauvegarde 2")
-            print("Le jeu va s'arrêter")
-            time.sleep(5)
-            sys.exit()
+            print("Une partie va être crée  dans la sauvegarde 2")
         with open ("Sauvegarde 2.txt", 'w') as fichier:
             fichier.write(f'{version_jeu}\n')
             for loop in range(NbVar):
@@ -141,31 +139,28 @@ if entré == 2:
         print("Une sauvegarde préparée à la mise à jour à été trouvée!")
         print("Conversion de la sauvegarde provenenant de la version:", version)
         print("Étape 4/5: Création d'un fichier de sauvegarde compatible à la version", version_jeu,"...")
-        if NbPartie == 1:
-            with open("Sauvegarde 1.txt", 'w') as fichier:
-                for loop in range(NbVar):
-                    fichier.write('0\n')
-        if NbPartie == 2:
-            with open("Sauvegarde 2.txt", 'w') as fichier:
-                for loop in range(NbVar):
-                    fichier.write('0\n')
-        if NbPartie == 3:
-            with open("Sauvegarde 3.txt", 'w') as fichier:
-                for loop in range(NbVar):
-                    fichier.write('0\n')
         partie[0] = version_jeu
         if NbPartie == 1:
             with open("Sauvegarde 1.txt", 'w') as fichier:
                 for partie in partie:
                     fichier.write(f'{partie}\n')
+                    copie = copie + 1
+                for loop in range(NbVar - copie):
+                    fichier.write('0\n')
         if NbPartie == 2:
             with open("Sauvegarde 2.txt", 'w') as fichier:
                 for partie in partie:
                     fichier.write(f'{partie}\n')
+                    copie = copie + 1
+                for loop in range(NbVar - copie):
+                    fichier.write('0\n')
         if NbPartie == 3:
             with open("Sauvegarde 3.txt", 'w') as fichier:
                 for partie in partie:
                     fichier.write(f'{partie}\n')
+                    copie = copie + 1
+                for loop in range(NbVar - copie):
+                    fichier.write('0\n')
         print("Étape 5/5: Votre sauvegarde est prête! Vous pouvez supprimez l'ancienne sauvegarde et utiliser la nouvelle dans ma vie virtuelle")
         print("Le programme va s'arrêter")
         time.sleep(15)

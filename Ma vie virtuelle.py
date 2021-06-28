@@ -1,22 +1,107 @@
 print("sys:Démarrage...")
-import time
-import os
-import sys
+print("Importation des modules...")
+try:
+    import time
+except ModuleNotFoundError:
+    print(":(")
+    print("Une erreur est survenue: MODULE_NOT_FOUND_ERROR")
+    print("Cet erreur est survenue car certain module n'ont pas été trouvé")
+    print("Le module: TIME est introuvable et Ma vie virtuelle ne peut plus continuer à fonctionner")
+    print("Le jeu va s'arrêter")
+    time.sleep(15)
+    sys.exit()
+try:
+    import os
+except ModuleNotFoundError:
+    print(":(")
+    print("Une erreur est survenue: MODULE_NOT_FOUND_ERROR")
+    print("Cet erreur est survenue car certain module n'ont pas été trouvé")
+    print("Le module: OS est introuvable et Ma vie virtuelle ne peut plus continuer à fonctionner")
+    time.sleep(15)
+    sys.exit()
+try:
+    import sys
+except ModuleNotFoundError:
+    print(":(")
+    print("Une erreur est survenue: MODULE_NOT_FOUND_ERROR")
+    print("Cet erreur est survenue car certain module n'ont pas été trouvé")
+    print("Le module: SYS est introuvable et Ma vie virtuelle ne peut plus continuer à fonctionner")
+    print("Le jeu va s'arrêter")
+    time.sleep(15)
+    sys.exit()
+try:
+    import subprocess
+except ModuleNotFoundError:
+    print(":(")
+    print("Une erreur est survenue: MODULE_NOT_FOUND_ERROR")
+    print("Cet erreur est survenue car certain module n'ont pas été trouvé")
+    print("Le module: SUBPROCESS est introuvable et Ma vie virtuelle ne peut plus continuer à fonctionner")
+    print("Le jeu va s'arrêter")
+    time.sleep(15)
+    sys.exit()
+try:
+    import wave
+except ModuleNotFoundError:
+    print("Une erreur est survenue: MODULE_NOT_FOUND_ERROR")
+    print("Cet erreur est survenue car un le module WAVE est introuvable")
+    print("Le jeu va continuer mais vous ne pourrez pas profitez de l'expérience de jeu")
+    time.sleep(5)
+try:
+    import tkinter
+    from tkinter import Label
+except ModuleNotFoundError:
+    print(":(")
+    print("Une erreur est survenue: MODULE_NOT_FOUND_ERROR")
+    print("Cet erreur est survenue car certain module n'ont pas été trouvé")
+    print("Le module: SUBPROCESS est introuvable et Ma vie virtuelle ne peut plus continuer à fonctionner")
+    print("Le jeu va s'arrêter")
+    time.sleep(10)
+    sys.exit()
+if os.path.exists("E1.py"):
+    print("Extension 1 trouvée!")
+else:
+    print("Echec de l'importation des modules!")
+    fenetre = tkinter.Tk()
+    fenetre.geometry("700x100")
+    fenetre.title("Erreur")
+    if os.path.exists("vcsconflicting_93497.ico"):
+        fenetre.iconbitmap("vcsconflicting_93497.ico")
+    texte1 = Label (fenetre, text="E1.py est introuvable")
+    texte2 = Label (fenetre, text="Le fichier est disponible dans les dossiers GitHub. Il doit se trouver dans le même dossier que Ma vie virtuelle.py")
+    texte1.pack()
+    texte2.pack()
+    fenetre.mainloop()
+    sys.exit()
+print("Définition des variables...")
+version_jeu = "0.1.2" #non Doit être changé à chaque MAJ
 entré = 0 #non
+essaie = 0 #non
 partie = [0, 0, 0] #non
 état_partie = 0 #oui 3
 nbPartie = 0 #non
 save = 0 #?
 pseudo = 0 #oui 2
-version = "0.0.3" #oui 1
-salle = "Entré"
+version = "0.1.2" #oui 1
+salle = "Entré" #non
 lit = "0" #oui 4
 code = 0 #oui 5
 exe = 0 #non
+comm = [] #non
+état_E1 = 0 #non
+energie_sav = 0 #oui 6
+energie = 0 #non
+faim_sav = 0 #oui 7
+faim = 0 #non
+humeur_sav = 0 #oui 8
+humeur = 0  #non
+hygiène_sav = 0 #oui 9
+hygiène = 0 #non
+print("Définition de certains scripts...")
 def minuteur (minute, seconde):
     while minute > -1:
         while seconde > 0:
             time.sleep(0.9)
+            os.system('cls' if os.name == 'nt' else 'clear')
             seconde = seconde - 1
             print(minute,":", seconde)
         minute = minute - 1
@@ -25,7 +110,9 @@ def demande():
     global entré
     global salle
     entré = input("["+salle+"] Que voulez vous faire?")
-print("Ma vie virtuelle made in Python (Version ALPHA 0.0.3)")
+print("Prêt!")
+time.sleep(1)
+print("Ma vie virtuelle made in Python (Version ALPHA",version_jeu,")")
 print("sys:Séléctionner une partie avec 1, 2 ou 3")
 print("sys:Pour gérer les sauvegardes démarrer l'assistant de sauvegarde inclu avec l'archive .rar")
 try:
@@ -60,7 +147,7 @@ try:
         print("Le jeu va s'arrêter")
         time.sleep(20)
         sys.exit()
-    if version != "0.1.1":
+    if version != version_jeu :
         print("Votre sauvegarde n'est pas conçu pour tourner sous cette version de Ma vie virtuelle.py veuillez supprimer cette sauvegarde puis en créer une dans l'assistant de sauvegarde")
         print("Le jeu va s'arrêter")
         time.sleep(10)
@@ -68,15 +155,16 @@ try:
 except FileNotFoundError:
     print(":(")
     print("Une erreur est survenue et le jeu ne peux plus fonctionner pour la raison suivante: FILE_NOT_FOUND")
-    print("Sauv.txt")
+    print("Les fichiers de sauvegardes sont introuvables, veuillez les crées dans l'assistant de sauvegarde")
     print("Le jeu va s'arrêter")
     time.sleep(20)
     sys.exit()
 if entré == 4:
     print("???: Bienvenue dans l'assistant de mise à jour")
     time.sleep(5)
-    print("sys: Vous avez découvert un easter-egg ATTENTION: Il va disparaître  pour la 0.2")
+    print("sys: Vous avez découvert un easter-egg ATTENTION: Il va disparaître pour la 0.2")
     print("Après cette version, seul l'assistant de sauvegarde pourra mettre à jour vos sauvegardes")
+    print("Tomservice à décidé de le supprimer car les méthodes de fonctionnement sont obsolètes")
     try:
         entré = int(input("Assistant de maj: Quel est le numéro de la sauvegarde que vous souhaiter convertir?"))
     except ValueError:
@@ -131,9 +219,13 @@ if entré == 4:
 try:
     version = partie[0]
     pseudo = partie[1]
-    état_partie = partie[2]
-    lit = partie[3]
-    code = partie[4]
+    état_partie = int(partie[2])
+    lit = int(partie[3])
+    code = int(partie[4])
+    energie = int(partie [5])
+    faim = int(partie [6])
+    humeur = int(partie [7])
+    hygiène = int(partie[8])
 except IndexError:
     print(":(")
     print("Une erreur est survenue et le jeu ne peux plus continuer à fonctionner pour la raison suivante: INDEX_ERROR")
@@ -142,8 +234,19 @@ except IndexError:
     time.sleep(15)
     sys.exit()
 print("sys:Partie chargé")
+if état_partie == 1:
+    print("Préparation en cours...")
+    with open ("comm.emvv", 'w') as fichier:
+        fichier.write('0\n')
+        fichier.write(f'{energie}\n')
+        fichier.write(f'{faim}\n')
+        fichier.write(f'{humeur}\n')
+        fichier.write(f'{hygiène}\n')
+        filepath = 'E1.py'
+        os.startfile(filepath)
+os.system('cls' if os.name == 'nt' else 'clear')
 while True:
-    if état_partie == "0":
+    if état_partie == 0:
         print("sys:??? à rejoint la conversation")
         print("???:Bonjour, cet sauvegarde est vide! Nous allons créer une partie")
         time.sleep(5)
@@ -224,6 +327,8 @@ while True:
         time.sleep(5)
         print("[Chambre]John: Cela signifie que l'objet n'est pas disponible pour le moment!")
         time.sleep(6)
+        print("[Chambre]Vous: Sérieux?")
+        time.sleep(3)
         print("[Chambre]John: Maintenant taper entrée pour retourner à l'entrée")
         while entré != "entrée":
             entré = input("sys: Que faire? Vos actions sont limité par le tutoriel.")
@@ -290,7 +395,7 @@ while True:
         time.sleep(10)
         print("[Salon]John: Maintenant je vous ai présenté les différents façon dont les actions peuvent être exprimé, je vais vous présenter un endroit important")
         time.sleep(10)
-        print("[Salon]John: S'il vous plait retournée à l'entré.")
+        print("[Salon]John: S'il vous plait retournée à l'entrée.")
         time.sleep(4)
         while entré != "entrée":
             entré = input("sys: Que faire? Vos actions sont limités par le tutoriel.")
@@ -308,7 +413,7 @@ while True:
         time.sleep(8)
         print("[Entrée]John: Vous pourrez remarquer que l'option télétravailler est désormais disponible!")
         time.sleep(6)
-        print("[Entrée]John: Contrairement à ce que vous pouvez probablement croire, il ne faut pas dire Télétravailler mais démarrer")
+        print("[Entrée]John: Contrairement à ce que vous pouvez probablement croire, il ne faut pas dire Télétravailler mais démarrer pour accéder à cette pièce (qui n'est même pas une pièce)")
         time.sleep(7)
         print("[Entrée]John: En effet il ne s'agit pas d'une pièce mais d'une action spécifique à la salle Entrée")
         time.sleep(6)
@@ -336,7 +441,7 @@ while True:
         time.sleep(5)
         print("[PC]Vous: Comment ça? Je n'ai jamais demandé à travailler pour vous!")
         time.sleep(4)
-        print("[PC]John: Écoutez", pseudo,", Johnservice vous à trouvé un toit et les pièces qui vont avec, aviez-vous réellement cru que tout cela serais gratuit?")
+        print("[PC]John: Écoutez", pseudo,", Johnservice vous à trouvé un toit et les pièces qui vont avec, aviez-vous réellement cru que tout cela serait gratuit?")
         time.sleep(12)
         while entré != "o":
             entré = input("[PC]sys: Acceptez-vous cela? (o/n)")
@@ -375,8 +480,9 @@ while True:
         print("4: Connaitre mon solde bancaire")
         print("5: Éxécuter arrêt.dll")
         time.sleep(15)
-        print("[PC]John: Chaque programme possède un fichier arrêt.dll. Sur skype, il faut entrer 5 pour l'éxécuter arrêt.dll")
+        print("[PC]John: Chaque programme possède un fichier arrêt.dll. Sur skype, il faut entrer 5 pour éxécuter arrêt.dll")
         time.sleep(10)
+        print("[PC]John: Maintenant, arrêter Skype!")
         print("[PC]John: Les fichiers arrêt.dll vous permettent de quitter un programme ou alors d'éteindre votre PC si vous êtes sur l'invite de commande")
         time.sleep(15)
         try:
@@ -395,17 +501,73 @@ while True:
         time.sleep(10)
         print("[PC]John: Je vous souhaite une bonne journée, si vous avez besoin d'aide, rendez-vous sur Skype")
         time.sleep(8)
-        print("[PC]John: ATTENTION: Il s'agit du tutoriel de la version ALPHA 0.1.1, IL EST INCOMPLET")
+        print("[PC]John: ATTENTION: Il s'agit du tutoriel de la version ALPHA",version_jeu,"IL EST INCOMPLET")
         time.sleep(7)
-        print("[PC]John: Après chaque maj, liser MAJ.txt pour connaitre les ajouts, il est recommandé de réaliser un tutoriel après chaque mise à jour")
+        print("[PC]John: Après chaque maj,lisez le texte qui est ajouté à côté de la version sur GitHub, il est recommandé de réaliser un tutoriel après chaque mise à jour")
         time.sleep(10)
         print("sys: John à quitté la conversation")
-        print("sys: Le tutoriel est terminé! Vous vous trouvé à l'entré de chez vous.")
-        time.sleep(10)
+        print("sys: Le tutoriel est terminé! Ma vie virtuelle doit redémarrer!")
+        time.sleep(3)
         salle = "entrée"
         exe = 1
+        état_partie = 1
+        print("Préparation à la sauvegarde...")
+        print("Sauvegarde de la partie", nbPartie,", veuillez patientez...")
+        partie[0] = version
+        partie[1] = pseudo
+        partie[2] = état_partie
+        partie[3] = lit
+        partie[4] = code
+        partie[5] = energie
+        partie[6] = faim
+        partie[7] = humeur
+        partie[8] = hygiène
+        try:
+            if nbPartie == 1:
+                with open("Sauvegarde 1.txt", 'w') as fichier:
+                    for partie in partie:
+                        fichier.write(f'{partie}\n')
+            if  nbPartie == 2:
+                with open("Sauvegarde 2.txt", 'w') as fichier:
+                    for partie in partie:
+                        fichier.write(f'{partie}\n')
+            if nbPartie == 3:
+                with open("Sauvegarde 3.txt", 'w') as fichier:
+                    for partie in partie:
+                        fichier.write(f'{partie}\n')
+            print("Partie Sauvegardé")
+            print("Le jeu va s'arrêter")
+            time.sleep(5)
+            sys.exit()
+        except PermissionError:
+            print(":(")
+            print("Une erreur est survenue: PERMISSION_ERROR")
+            print("Cet erreur est survenue car Python ne possède pas les permissions pour modifier le fichier! Vérifiez que le fichier sauvegarde.txt n'est pas protégé en écriture")
+            print("Toutes les données enregistrées durant le tuto seront perdu!")
+            time.sleep(10)
+            sys.exit()
     else:
-        demande()
+        demande() 
+        try:
+            with open ("comm.emvv", 'r') as filin:
+                comm = filin.read().splitlines()
+            état_E1 = int(comm[0])
+            energie = int(comm[1])
+            faim = int(comm[2])
+            humeur = int(comm [3])
+            hygiène = int(comm [4])
+        except FileNotFoundError:
+            print(":(")
+            print("Le fichier comm.emvv à rencontré un problème")
+            print("Ma vie virtuelle doit s'éteindre, toutes les données non sauvegardés seront perdu!")
+            time.sleep(10)
+            sys.exit()
+        except IndexError:
+            print(":(")
+            print("Le fichier comm.emvv à rencontré un problème")
+            print("Ma vie virtuelle doit s'éteindre, toutes les données non sauvegardés seront perdu!")
+            time.sleep(10)
+            sys.exit()
         if entré == "save":
             exe = 1
             print("sys: La fonction save est désactivé car un bug est présent mais aucune solution n'à été trouvé pour le moment. L'équipe de dev de Tomservice enquête actuellement sur ce bug")
@@ -438,12 +600,27 @@ while True:
         if entré == "fin":
             entré = input("Voulez quitter et sauvegardée la partie?(o/n)")
             if entré =="o":
+                print("Préparation à la sauvegarde...")
                 print("Sauvegarde de la partie", nbPartie,", veuillez patientez...")
+                with open ("comm.emvv", 'r') as filin:
+                    comm = filin.read().splitlines()
+                comm[0] = "1"
+                energie = int(comm[1])
+                faim = int(comm [2])
+                humeur = int(comm[3])
+                hygiène = int(comm[4])
                 partie[0] = version
                 partie[1] = pseudo
                 partie[2] = état_partie
                 partie[3] = lit
                 partie[4] = code
+                partie[5] = energie
+                partie[6] = faim
+                partie[7] = humeur
+                partie[8] = hygiène
+                with open ("comm.emvv", 'w') as fichier:
+                    for comm in comm:
+                        fichier.write(f'{comm}\n')
                 try:
                     if nbPartie == 1:
                         with open("Sauvegarde 1.txt", 'w') as fichier:
@@ -456,7 +633,7 @@ while True:
                     if nbPartie == 3:
                         with open("Sauvegarde 3.txt", 'w') as fichier:
                             for partie in partie:
-                                fichier.write('f{partie}\n')
+                                fichier.write(f'{partie}\n')
                     print("Partie Sauvegardé")
                     print("Le jeu va s'arrêter")
                     time.sleep(5)
@@ -478,7 +655,7 @@ while True:
             print("Commande de base:")
             print("save (indisponible): Permet de sauvegarder")
             print("fin: Permet de sauvegarder la partie et quitter le jeu")
-            print("démarrer (indisponible): Démarre le PC de travail")
+            print("démarrer: (indisponible): Démarre le PC de travail")
             time.sleep(5)
             exe = 1
         if entré == "chambre":
@@ -492,22 +669,32 @@ while True:
                     exe = 1
                 if entré == "dormir":
                     print("Vous allez dormir...")
-                    if lit == "0":
-                        print("Votre lit n'est pas fait, vous dormez plus longtemps car vous n'êtes pas à l'aise")
+                    if lit == 0:
+                        print("Votre lit n'est pas fait, vous avez du mal à dormir car vous n'êtes pas à l'aise")
                         minuteur(5,0)
+                        energie = 100
                     else:
                         print("Votre lit est fait, vous êtes à l'aise")
                         minuteur(2,0)
-                    lit = "1"
+                        energie = 100
+                    with open ("comm.emvv", 'r') as filin:
+                        comm = filin.read().splitlines()
+                    comm[1] = 100
+                    with open ("comm.emvv", 'w') as fichier:
+                        for comm in comm:
+                            fichier.write(f'{comm}\n')
+                    lit = 1
                     exe = 1
                     print("Vous avez dormi")
                 if entré == "faire le lit":
-                    if lit == "0":
+                    if lit == 0:
                         print("Vous allez faire votre lit")
                         minuteur(1,0)
-                        lit = "1"
+                        lit = 1
                     else:
                         print("Votre lit à déjà été fait, inutile de le refaire mais je connais une personne qui sera content de dormir")
+                    exe = 1
+                if entré == "entrée":
                     exe = 1
                 if exe == 0:
                     print("Commande invalide. Vérifiez que tout est en minuscule.")
@@ -517,3 +704,16 @@ while True:
         if exe == 0:
             print("Commande invalide. Vérifiez que tout est en minuscule")
         exe = 0
+        with open ("comm.emvv", 'r') as filin:
+            comm = filin.read().splitlines()
+        comm[1] = int(comm[1]) + energie_sav
+        comm[2] = int(comm[2]) + faim_sav
+        comm[3] = int(comm[3]) + humeur_sav
+        comm[4] = int(comm [4]) + hygiène_sav
+        with open ("comm.emvv", 'w') as fichier:
+            for comm in comm:
+                fichier.write(f'{comm}\n')
+        energie_sav = 0
+        faim_sav = 0
+        humeur_sav = 0
+        hygiène_sav = 0
