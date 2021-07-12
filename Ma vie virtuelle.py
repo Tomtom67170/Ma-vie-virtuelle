@@ -73,7 +73,7 @@ else:
     fenetre.mainloop()
     sys.exit()
 print("Définition des variables...")
-version_jeu = "0.1.2" #non Doit être changé à chaque MAJ
+version_jeu = "0.1.3" #non Doit être changé à chaque MAJ
 entré = 0 #non
 essaie = 0 #non
 partie = [0, 0, 0] #non
