@@ -2,7 +2,7 @@ print("Démarrage")
 import time
 import os
 import sys
-version_jeu = "0.1.2"   #Doit être modifié à CHAQUE maj
+version_jeu = "0.2"   #Doit être modifié à CHAQUE maj
 partie = []
 entré = 0
 version = 0
@@ -12,11 +12,11 @@ fichier = 0
 test = []
 copie = 0
 print("Bienvenue dans l'assistant de sauvegarde!")
-print("Ce programme est conçu pour gérer les sauvegardes de Ma vie virtuel.py version", version_jeu)
-if os.path.exists("Ma vie virtuelle.py"):
-    print("Ma vie virtuelle à été trouvé dans ce dossier")
+print("Ce programme est conçu pour gérer les sauvegardes de Jours Frais.py version", version_jeu)
+if os.path.exists("Jours Frais.py"):
+    print("Jours Frais à été trouvé dans ce dossier")
 else:
-    print("Impossible de trouver Ma vie virtuelle.py! Veuillez extraire le fichier de l'archive .rar dans le même dossier que cet assistant!")
+    print("Impossible de trouver Jours Frais.py! Veuillez extraire le fichier de l'archive .rar dans le même dossier que cet assistant!")
     print("Le programme va s'arrêter")
     time.sleep(15)
     sys.exit()
@@ -116,7 +116,7 @@ if entré == 2:
             time.sleep(10)
             sys.exit()
         except FileNotFoundError:
-            input("Étape 2/5: Placer l'ancien fichier de sauvegarde (la sauvegarde doit être préparée au mise à jour) dans le dossier de ma vie virtuel, appuyer sur entrée une fois cela fait")
+            input("Étape 2/5: Placer l'ancien fichier de sauvegarde (la sauvegarde doit être préparée au mise à jour) dans le dossier de Jours Frais, appuyer sur entrée une fois cela fait")
         print("3/5: Lecture du fichier...")
         try:
             if NbPartie == 1:
@@ -161,7 +161,7 @@ if entré == 2:
                     copie = copie + 1
                 for loop in range(NbVar - copie):
                     fichier.write('0\n')
-        print("Étape 5/5: Votre sauvegarde est prête! Vous pouvez supprimez l'ancienne sauvegarde et utiliser la nouvelle dans ma vie virtuelle")
+        print("Étape 5/5: Votre sauvegarde est prête! Vous pouvez supprimez l'ancienne sauvegarde et utiliser la nouvelle dans Jours Frais")
         print("Le programme va s'arrêter")
         time.sleep(15)
     sys.exit()
@@ -315,8 +315,8 @@ if entré == 5:
         time.sleep(10)
     sys.exit()
 if entré == 6:
-    print("Bienvenue dans l'assistant de mise à jour! Cet assistant va préparez vos sauvegardes au mise à jour de Ma vie virtuelle.py")
-    print("ATTENTION: Les sauvegardes préparées au mise à jour ne peuvent plus être utilisé autremant qu'avec l'assistant de mise à jour")
+    print("Bienvenue dans l'assistant de mise à jour! Cet assistant va préparez vos sauvegardes au mise à jour de Jours Frais.py")
+    print("ATTENTION: Les sauvegardes préparées au mise à jour ne peuvent plus être utilisé autrement qu'avec l'assistant de mise à jour")
     entré = input("Voulez-vous continuer? [o/n]")
     if entré == "o":
         VALLUE_ERROR("Quel sauvegarde voulez-vous préparée au mise à jour?")
